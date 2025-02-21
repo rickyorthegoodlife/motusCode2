@@ -1,0 +1,247 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  text-align: center;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.score {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.grid {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  justify-content: center;
+  gap: 5px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cell:hover {
+  transform: scale(1.05);
+}
+
+.cell.correct {
+  background: linear-gradient(135deg, #ff6b6b, #ff416c);
+  color: white;
+}
+
+.cell.present {
+  background: linear-gradient(135deg, #ffe66d, #ffcc00);
+  color: black;
+  border-radius: 50%;
+}
+
+input[type='text'] {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  width: calc(100% - 24px);
+  transition: border-color 0.3s;
+}
+
+input[type='text']:focus {
+  border-color: #6a11cb;
+  outline: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 48%;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: translateY(-2px);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.key {
+  padding: 13px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 2px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 56px;
+}
+
+.key:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: translateY(-2px);
+}
+
+.key.special {
+  background: linear-gradient(135deg, #ff6b6b, #ff416c);
+  flex: 2;
+  max-width: 112px;
+}
+
+.key.special:hover {
+  background: linear-gradient(135deg, #ff416c, #ff6b6b);
+}
+
+@media (max-width: 600px) {
+  .game-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .key {
+    padding: 8px;
+    font-size: 14px;
+    max-width: 46px;
+  }
+
+  .key.special {
+    max-width: 92px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  button {
+    max-width: 100%;
+    margin: 5px 0;
+  }
+
+  .keyboard {
+    padding: 0;
+  }
+}
